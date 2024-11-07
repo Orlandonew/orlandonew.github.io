@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Regla de Proximidad: Guía para Seleccionar el Instrumento Más Apropiado</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.16/tailwind.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css"> <!-- Vincular archivo CSS externo -->
+</head>
+<body>
+    <div class="container">
+        <h1 class="text-3xl font-bold">Regla de Proximidad: Guía para Seleccionar el Instrumento Más Apropiado</h1>
+        <div class="intro">
+            <p>La regla de proximidad es una metodología diseñada para ayudar a seleccionar el instrumento de medición más adecuado en función de varios criterios clave que permiten una evaluación precisa de la adecuación de un instrumento a un contexto particular. Estos criterios incluyen la proximidad temática, proximidad poblacional, el idioma del instrumento, la calidad de los indicadores psicométricos, la longitud del instrumento, y la fecha de creación y validación. A continuación, se presenta una tabla con los criterios y su ponderación para ayudarle a entender cómo evaluar cada uno de estos aspectos.</p>
+
+            <p><em>Los criterios y ponderaciones son sugeridos. La intención general se orienta a promover la toma de decisiones estructurada acerca de los instrumentos de medición a utilizar.</em></p>
+            <p><em>Por Orlando Scoppetta PhD</em></p>
+        </div>
+
+        <table class="criteria-table">
+            <thead>
+                <tr>
+                    <th>Criterio</th>
+                    <th>Ponderación</th>
+                    <th>Descripción</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Proximidad Temática</td>
+                    <td>20%</td>
+                    <td>El instrumento debe estar alineado específicamente con el tema o constructo que se desea medir, asegurando que las preguntas y áreas cubiertas sean directamente relevantes. Califique con cinco (5) si el instrumento mide explícitamente el constructo que usted quiere medir.</td>
+                </tr>
+                <tr>
+                    <td>Proximidad Poblacional - País</td>
+                    <td>15%</td>
+                    <td>El instrumento fue creado o validado recientemente en el mismo país en el que va a utilizarse. Califique con cinco (5) si el instrumento fue creado o validado recientemente en el país en el que usted quiere aplicarlo.</td>
+                </tr>
+                <tr>
+                    <td>Proximidad Poblacional - Grupo de Edad</td>
+                    <td>10%</td>
+                    <td>El instrumento fue creado o validado recientemente en el mismo grupo de edad al que usted quiere aplicarlo. Califique con cinco (5) si el instrumento fue creado o validado recientemente en el grupo de edad que desea estudiar.</td>
+                </tr>
+                <tr>
+                    <td>Idioma</td>
+                    <td>15%</td>
+                    <td>El instrumento fue creado o validado recientemente en el idioma de la población objetivo. Califique con cinco (5) si el instrumento fue creado o validado recientemente en el idioma en el que usted quiere aplicarlo.</td>
+                </tr>
+                <tr>
+                    <td>Indicadores Psicométricos</td>
+                    <td>20%</td>
+                    <td>El instrumento debe tener indicadores sólidos de consistencia interna y validez, análisis factorial confirmatorio o análisis tipo IRT, entre otros, que respalden su uso con confianza.</td>
+                </tr>
+                <tr>
+                    <td>Longitud del Instrumento</td>
+                    <td>10%</td>
+                    <td>Número de preguntas o ítems que el participante debe responder. La extensión del instrumento debe ser adecuada, teniendo en cuenta el balance entre la profundidad de la medición y el tiempo que lleva completarlo para evitar la fatiga en los encuestados. Califique con cinco (5) al instrumento más corto.</td>
+                </tr>
+                <tr>
+                    <td>Fecha de Creación y Validación</td>
+                    <td>10%</td>
+                    <td>El instrumento debe haber sido creado y validado recientemente o haber sido revisado en los últimos años para asegurar su relevancia y actualización a las nuevas realidades del contexto. Califique con cinco (5) al instrumento de más reciente creación o validación.</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <div class="scale-info">
+            <h3 class="text-xl font-bold">Califique cada aspecto del instrumento de acuerdo con la siguiente escala:</h3>
+            <ul>
+                <li>5 = Ajuste total</li>
+                <li>4 = Ajuste en alto grado</li>
+                <li>3 = Ajuste parcial</li>
+                <li>2 = Ajuste débil</li>
+                <li>1 = Ajuste muy débil</li>
+            </ul>
+        </div>
+
+        <div id="step1" class="step">
+            <h2 class="text-xl font-bold">Paso 1: Indique el constructo</h2>
+            <input type="text" id="constructInput" class="input-field" placeholder="Ej: Inteligencia Emocional" required>
+            <div class="error-message" id="constructError">Por favor, ingresa el constructo a medir.</div>
+            <div class="button-group">
+                <button class="button" onclick="goToStep2()">Continuar</button>
+            </div>
+        </div>
+
+        <div id="step2" class="step" style="display: none;">
+            <h2 class="text-xl font-bold">Paso 2: Evaluar Instrumentos</h2>
+            <div id="instrumentSection"></div>
+            <div class="button-group">
+                <button class="button" onclick="addInstrument()">Agregar Instrumento</button>
+                <button class="button" onclick="finalizeEvaluation()">Finalizar Evaluación</button>
+            </div>
+        </div>
+
+        <table id="resultTable" class="result-table" style="display: none;">
+            <thead>
+                <tr>
+                    <th>Instrumento</th>
+                    <th>Pertinencia Temática</th>
+                    <th>Indicadores Psicométricos</th>
+                    <th>Proximidad Poblacional - País</th>
+                    <th>Proximidad Poblacional - Grupo de Edad</th>
+                    <th>Idioma</th>
+                    <th>Longitud del Instrumento</th>
+                    <th>Fecha de Creación y Validación</th>
+                    <th>Puntuación Total (%)</th>
+                </tr>
+            </thead>
+            <tbody></tbody>
+        </table>
+    </div>
+
+    <script src="script.js"></script> <!-- Vincular archivo JavaScript externo -->
+</body>
+</html>
